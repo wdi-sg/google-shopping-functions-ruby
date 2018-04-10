@@ -16,6 +16,10 @@ def get_items_count( item_data )
   item_data[:items].length
 end
 
+def get_items( item_data )
+  item_data[:items]
+end
+
 # use byebug to set a breakpoint
 #byebug
 
