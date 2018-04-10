@@ -45,7 +45,7 @@ end
 
 # output item count using the getItemsCount function
 # puts "Item Count: #{get_items_count( data )}"
-# pp "Items Array: #{get_items(data)}"
+# puts "Items Array: #{get_items(data)}"
 # puts "Brand Items: #{get_items_by_brand(data, 'Sony')}"
 # puts "Items by Author: #{get_items_by_author(data, 'Ritz Camera')}"
 # puts "Items in Stock: #{get_available_products(data)}"
