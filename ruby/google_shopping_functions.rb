@@ -68,4 +68,13 @@ end
 #puts "Target Items: #{get_items_by_author(get_items(data), 'Target')}"
 #puts "CDW Items: #{get_items_by_author(get_items(data), 'CDW')}"
 #puts "eBay Items: #{get_items_by_author(get_items(data), 'eBay')}"
-puts "Available Items: #{get_available_products(get_items(data))}"
+#puts "Available Items: #{get_available_products(get_items(data))}"
+sony_items = get_items_by_brand(get_items(data), 'Sony')
+#pp sony_items
+available_sony_items = get_available_products(sony_items)
+pp available_sony_items
+author_items = get_available_products(get_items_by_author(get_items(data),'Adorama Camera'))
+pp author_items
+nikon_items = get_items_by_brand(get_items(data), 'Nikon')
+nikon_ebay_items = get_items_by_author(nikon_items, 'eBay')
+pp nikon_ebay_items
