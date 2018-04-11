@@ -53,7 +53,7 @@ end
 def getItemsByAuthor (items, author)
   result = []
   items.each do |item|
-    if item[:product][:author][:name].downcase.include? author.downcase
+    if item[:product][:author][:name].downcase.include?(author.downcase)
       result.push(item)
     end
   end
@@ -80,4 +80,4 @@ pp getItemsByBrand(items, "Sony")
 pp getItemsByBrand(getAvailableProducts(items), "Sony")
 pp getItemsByAuthor(items, "Adorama Camera")
 pp getItemsByAuthor(getItemsByBrand(items, "Nikon"), "eBay")
-puts "No of items by nikon with author eBay:  #{getItemsByAuthor(getItemsByBrand(items, "Nikon"), "eBay").size}"
+puts "No of items by nikon with author eBay:  #{getItemsByAuthor(getItemsByBrand(items, "Nikon"), "eBay")}"
