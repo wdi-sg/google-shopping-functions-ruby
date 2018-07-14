@@ -2,17 +2,17 @@ require 'byebug'
 require 'json'
 require 'pp'
 
-file = File.read('products.json')
+file = File.read('../products.json')
 data = JSON.parse(file, {:symbolize_names => true})
 
-pp data
+# pp data
 
 # example function called get_items_count
 # input: accepts full item data
 # output: returns the length of the items array
 
 def get_items_count( item_data )
-
+  # Get number of items in the json file
   item_data.size
 end
 
@@ -23,3 +23,67 @@ end
 
 # output item count using the getItemsCount function
 puts "Item Count: #{get_items_count( data )}"
+
+# 1.) getItems(objectData)
+def getItems( item_data )
+  return item_data[:items]
+end
+
+# 2.) getItemsByBrand(items, brand)
+def getItemsByBrand(items, brand)
+  items.select { |item| item[:product][:brand] == brand }
+  # itemsByBrand = {
+  #   :items => []
+  # }
+  # items.each do |item|
+  #   if item[:product][:brand] == brand
+  #     itemsByBrand[:items].push(item)
+  #   end
+  # end
+  # return itemsByBrand[:items]
+end
+
+# 3.) getItemsByAuthor(items, author)
+def getItemsByAuthor(items, author)
+  items.select { |item| item[:product][:author][:name] == author }
+  # itemsByAuthor = {
+  #   :items => []
+  # }
+  # items.each do |item|
+  #   if item[:product][:author][:name] == author
+  #     itemsByAuthor[:items].push(item)
+  #   end
+  # end
+  # return itemsByAuthor[:items]
+end
+
+# 4.) getAvailableProducts(items)
+def getAvailableProducts(items)
+  items.select { |item| item[:product][:inventories][0][:availability] == 'inStock' }
+  # availableProducts = {
+  #   :items => []
+  # }
+  # items.each do |item|
+  #   if item[:product][:inventories][0][:availability] == 'inStock'
+  #     availableProducts[:items].push(item)
+  #   end
+  # end
+  # return availableProducts[:items]
+end
+
+# 5.) Use your functions
+# ------------------------------All items made by Sony.--------------------------------------
+# puts "Items that are of brand Sony => "
+# pp getItemsByBrand(getItems(data), "Sony")
+
+# -------------------All items made by Sony that are available.------------------------------
+# puts "Items that are of brand Sony and are available => "
+# pp getAvailableProducts(getItemsByBrand(getItems(data), "Sony"))
+
+# ----------All available items by the author "Adorama Camera"---------------------------
+# puts "Items that are available and authored Adorama Camera => "
+# pp getAvailableProducts(getItemsByAuthor(getItems(data), "Adorama Camera"))
+
+# ---------All items made by Nikon with the author eBay.---------------------------
+puts "Items that are made by Nikon and authored eBay => "
+pp getItemsByAuthor(getItemsByBrand(getItems(data), "Nikon"), "eBay")
