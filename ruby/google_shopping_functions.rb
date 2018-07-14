@@ -27,6 +27,13 @@ def getItemsByAuthor(items, author)
   }
 end
 
+def getItemsByAuthorV2(items, author)
+ items.select {
+  |item|
+  item[:product][:author][:name].include?(author)
+  }
+end
+
 def getAvailableProducts(items)
   items.select {
     |item|
