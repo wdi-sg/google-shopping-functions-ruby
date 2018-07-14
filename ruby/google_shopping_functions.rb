@@ -2,24 +2,69 @@ require 'byebug'
 require 'json'
 require 'pp'
 
-file = File.read('products.json')
+file = File.read('../products.json')
 data = JSON.parse(file, {:symbolize_names => true})
 
-pp data
-
-# example function called get_items_count
-# input: accepts full item data
-# output: returns the length of the items array
-
-def get_items_count( item_data )
-
-  item_data.size
+def getItemCount(objectData)
+  objectData.size
 end
 
-# use byebug to set a breakpoint
-#byebug
+def getItems(objectData)
+  objectData[:items]
+end
 
-# Define and use your functions here
+def getItemsByBrand(items, brand)
+  items.select {
+    |item|
+    item[:product][:brand] == brand
+  }
+end
 
-# output item count using the getItemsCount function
-puts "Item Count: #{get_items_count( data )}"
+def getItemsByAuthor(items, author)
+  items.select {
+    |item|
+    item[:product][:author][:name] == author
+  }
+end
+
+def getAvailableProducts(items)
+  items.select {
+    |item|
+    item[:product][:inventories].any? {
+      |inventory|
+      inventory[:availability] == 'inStock'
+    }
+  }
+end
+
+# items = getItems(data)
+
+# single line version
+# puts "Item Count: #{getItemCount(data)}"
+# puts "Items Made By Sony: #{getItemsByBrand(items, 'Sony')}"
+# puts "Available Items Made By Sony: #{getItemsByBrand(getAvailableProducts(items), 'Sony')}"
+# puts "Available Items By Adorama Camera: #{getItemsByAuthor(getAvailableProducts(items), 'Adorama Camera')}"
+# puts "Items Made By Nikon by eBay: #{getItemsByBrand(getItemsByAuthor(items, 'eBay'), 'Nikon')}"
+
+# verbose version
+# count = getItemCount(data)
+# puts "Item Count:"
+# pp count
+
+# itemsByBrand = getItemsByBrand(items, 'Sony')
+# puts "Items Made By Sony:"
+# pp itemsByBrand
+
+# availableItems = getAvailableProducts(items)
+# availableSony = getItemsByBrand(availableItems, 'Sony')
+# puts "Available Items Made By Sony:"
+# pp availableSony
+
+# availableAdorama = getItemsByAuthor(availableItems, 'Adorama Camera')
+# puts "Available Items By Adorama Camera:"
+# pp availableAdorama
+
+# eBayItems = getItemsByAuthor(items, 'eBay')
+# eBayNikonItems = getItemsByBrand(eBayItems, 'Nikon')
+# puts "Items Made By Nikon by eBay:"
+# pp eBayNikonItems
