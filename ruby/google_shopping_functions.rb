@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require 'byebug'
 require 'json'
 require 'pp'
