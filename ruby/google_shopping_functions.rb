@@ -33,7 +33,7 @@ end
 
 def get_items_by_author array, author
   return array.select{ |x|
-    x[:product][:author][:name] == author
+    x[:product][:author][:name].include? "#{author}"
   }
 end
 
@@ -54,7 +54,7 @@ end
 #puts get_items_by_brand(get_items(data), "Sony")
 
 # outputs items by author name:
-# puts get_items_by_author(get_items(data), "Adorama Camera")
+#puts get_items_by_author(get_items(data), "Adorama Camera")
 
 # outputs items by brand and availability
 #puts get_available_items(get_items_by_brand(get_items(data), "Sony"), "inStock")
