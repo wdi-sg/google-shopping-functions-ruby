@@ -26,26 +26,26 @@ puts "Item Count: #{get_items_count( data )}"
 
 
 # 1. Create a function called `getItems` that simply returns the items array from the google product object.
-def get_items ( item_data )
-  item_data[:items]
+def get_items ( items )
+  items.size
 end
 
 
 # 2. Create a function called `getItemsByBrand` that takes an item array returns a new array of all items of a specified brand.
-def get_items_by_brand (item_data)
-  item_data[:items,[product][brand]]
+def get_items_by_brand (items, brand_name)
+  items.select {|items| items[:product][:brand].match == brand_name}
 end
 
 
 # 3. Create a function called `getItemsByAuthor` that takes an item array and returns a new array of all items by a specified author.
-def get_items_by_author (item_data)
-  item_data
+def get_items_by_author (items, author)
+  items.select {|items| items[:author][:name].match == author }
 end
 
 
 # 4. Create function called `getAvailableProducts` that takes an item array and returns an array containing all of the available products (an available product is one with at least one availability of "inStock" in the inventories array)
-def get_available_products (item_data)
-  item_data
+def get_available_products (products)
+  products = {|items| items[:inventories][0][:availability].match == "inStock"}
 end
 
 
