@@ -53,49 +53,6 @@ end
 
 # output item count using the getItemsCount function
 
-# puts "Items: #{getItems( data )}"
-
-# puts "Sony items: #{getItemsByBrand(items, 'Sony')}"
-# puts "Canon items: #{getItemsByBrand(items, 'Canon')}"
-# puts "Nikon items: #{getItemsByBrand(items, 'Nikon')}"
-# puts "Panasonic items: #{getItemsByBrand(items, 'Panasonic')}"
-
-# puts "Items by author Target: #{getItemsByAuthor(items, "Target")}"
-# puts "Items by author CDW: #{getItemsByAuthor(items, "CDW")}"
-# puts "Items by author eBay: #{getItemsByAuthor(items, "eBay")}"
-
-# puts "Available items: #{getAvailableProducts(items)}"
 
 
 
-
-
-# puts "1. Sony items: #{getItemsByBrand(items, 'Sony')}"
-# puts "2. Available Sony items: #{getItemsByBrand(getAvailableProducts(items), 'Sony')}"
-# puts "3. Available items by author Adorama Camera: #{getItemsByAuthor(getAvailableProducts(items), 'Adorama Camera')}"
-# puts "4. Nikon items by author eBay: #{getItemsByAuthor(getItemsByBrand(items, 'Nikon'), 'eBay')}"
-
-
-
-
-
-# puts "All products are from US?: #{items.all? {|item| item[:product][:country] == 'US'}}"
-# puts "All products are new?: #{items.all? {|item| item[:product][:condition] == 'new'}}"
-
-# puts "Any Lytro product?: #{items.any? {|item| item[:product][:brand] == 'Lytro'}}"
-
-# items.each_with_index { |val, index| puts "#{index}. #{val[:product][:title]}" }
-# getItemsByBrand(items, 'Nikon').each_with_index { |item, index| puts "#{index}. #{item[:product][:title]}" }
-
-# pentax =  items.find { |item| item[:product][:brand] == 'Pentax' }
-# puts "One of the Pentax products: #{pentax[:product][:title]}"
-# expItem = items.find { |item| item[:product][:inventories][0][:price] > 2000 }
-# puts "One of the products above $2000: #{expItem[:product][:title]}"
-
-# use byebug to set a breakpoint
-#byebug
-
-# Define and use your functions here
-
-# output item count using the getItemsCount function
-puts "Item Count: #{get_items_count( data )}"
