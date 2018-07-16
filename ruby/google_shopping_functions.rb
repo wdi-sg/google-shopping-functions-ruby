@@ -11,9 +11,39 @@ pp data
 # input: accepts full item data
 # output: returns the length of the items array
 
-def get_items_count( item_data )
+def getItems data
+	items = data[:items]
+	result = items.map { |item| item[:product][:title] }
+end
 
-  item_data.size
+
+def getItemsByBrand items, brand
+	results = Array.new
+	items.each do |item|
+		if item[:product][:brand] == brand
+			results << item
+		end
+	end
+end
+
+
+def getItemsByAuthor items, author
+	results = Array.new
+	items.each do |item|
+		if item[:product][:author][:name] == author
+			results << item
+		end
+	end
+end
+
+
+def getAvailableProducts items 
+	results = Array.new
+	items.each do |item|
+		if item[:product][:inventories][0][:availability] == "inStock"
+			results << item
+		end
+	end
 end
 
 # use byebug to set a breakpoint
@@ -22,4 +52,7 @@ end
 # Define and use your functions here
 
 # output item count using the getItemsCount function
-puts "Item Count: #{get_items_count( data )}"
+
+
+
+
