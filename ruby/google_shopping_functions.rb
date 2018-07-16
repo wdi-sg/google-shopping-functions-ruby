@@ -21,7 +21,7 @@ def getItemsByBrand items, brand
 	results = Array.new
 	items.each do |item|
 		if item[:product][:brand] == brand
-			results.push(item)
+			results << item
 		end
 	end
 end
@@ -31,7 +31,7 @@ def getItemsByAuthor items, author
 	results = Array.new
 	items.each do |item|
 		if item[:product][:author][:name] == author
-			results.push(item)
+			results << item
 		end
 	end
 end
@@ -41,7 +41,7 @@ def getAvailableProducts items
 	results = Array.new
 	items.each do |item|
 		if item[:product][:inventories][0][:availability] == "inStock"
-			results.push(item)
+			results << item
 		end
 	end
 end
