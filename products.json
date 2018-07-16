@@ -142,7 +142,7 @@
     "inventories": [
      {
       "channel": "online",
-      "availability": "backorder",
+      "availability": "inStock",
       "price": 898.0,
       "shipping": 0.0,
       "currency": "USD"

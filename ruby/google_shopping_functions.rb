@@ -32,7 +32,7 @@ end
 
 def getItemsByBrand(items, brand)
 
-	result = items.select { |item| item[:product][:brand].downcase == brand.downcase }
+	result = items.find_all { |item| item[:product][:brand].downcase == brand.downcase }
 end
 
 # puts "Items by Brand: "
@@ -44,12 +44,15 @@ def getItemsByAuthor(items, author)
 end
 
 # puts "Items by Author: "
-# pp getItemsByAuthor(getItems(data), 'Ebay')
+# pp getItemsByAuthor(getItems(data), "Adorama Camera")
 
 
 def getAvailableProducts(items)
 
-	result = items.select { |item| item[:product][:inventories][0][:availability] == "inStock"}
+	result = items.select do |item|
+    
+    item[:product][:inventories][0][:availability] == "inStock"
+  end
 end
 
 # puts "Items by Availability: "
@@ -58,6 +61,12 @@ end
 
 
 # pp getItemsByBrand(getItems(data), "Sony")
+
 # pp getItemsByBrand(getAvailableProducts(getItems(data)), "Sony")
-# pp getItemsByAuthor(getAvailableProducts(getItems(data)), "Adorama Camera")
+
+# pp getItemsByAuthor(getAvailableProducts(getItems(data)), "Adorama Camera") # no available "Adorama Camera" products
+
 # pp getItemsByAuthor(getItemsByBrand(getItems(data), "Nikon"), "eBay")
+
+
+
